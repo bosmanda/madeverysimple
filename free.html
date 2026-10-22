@@ -69,7 +69,7 @@
 
     // MailerLite form endpoint. Paste the "action" URL from your MailerLite embedded form here.
     // Example: https://assets.mailerlite.com/jsonp/1234567/forms/987654321/subscribe
-    const FORM_ACTION = '';
+    const FORM_ACTION = 'https://assets.mailerlite.com/jsonp/2734658/forms/202059724226561384/subscribe';
 
     const form = document.getElementById('signup');
     const msg = document.getElementById('msg');
@@ -82,10 +82,10 @@
       const btn = form.querySelector('button');
       btn.disabled = true; msg.textContent = 'Sending…';
       try {
-        const res = await fetch(FORM_ACTION, { method: 'POST', body: new FormData(form) });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && data.success !== false) { window.location.href = '/thanks.html'; return; }
-        msg.textContent = 'Something went wrong. Please check your email address and try again.';
+        // MailerLite doesn't allow reading the reply from another website, so we send and move on.
+        await fetch(FORM_ACTION, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+        window.location.href = '/thanks.html';
+        return;
       } catch (err) {
         msg.textContent = 'Something went wrong. Please try again in a moment.';
       }
