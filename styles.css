@@ -183,3 +183,31 @@ a.card:hover { transform: translateY(-3px); }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .site-footer a { color: var(--muted); }
 .disclosure-note { font-size: .85rem; color: var(--muted); margin-top: 12px; }
+
+/* Free download / sign-up */
+.freebie { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+.freebie-text { flex: 999 1 420px; min-width: 0; }
+.freebie-preview { flex: 1 1 240px; max-width: 340px; margin: 8px auto 0; }
+.freebie-preview img {
+  width: 100%; height: auto; border-radius: 14px; background: #fff;
+  border: 1px solid var(--line); box-shadow: var(--shadow); transform: rotate(2deg);
+}
+.ticks { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 8px; }
+.ticks li { padding-left: 30px; position: relative; }
+.ticks li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+.signup {
+  display: grid; gap: 8px; max-width: 460px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+}
+.signup label { font-weight: 600; font-size: .95rem; }
+.signup .opt { font-weight: 400; color: var(--muted); }
+.signup input[type=text], .signup input[type=email] {
+  font: inherit; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line);
+  background: var(--bg); color: var(--ink); margin-bottom: 8px; min-height: 48px;
+}
+.signup input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.signup .consent { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: .9rem; color: var(--muted); margin: 4px 0 10px; }
+.signup .consent input { margin-top: 4px; width: 18px; height: 18px; flex: none; accent-color: var(--accent); }
+.signup .btn { justify-content: center; min-height: 48px; font-size: 1rem; cursor: pointer; }
+.signup .btn[disabled] { opacity: .6; cursor: wait; }
+.form-msg { min-height: 1.4em; margin: 4px 0 0; font-weight: 600; }

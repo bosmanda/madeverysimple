@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>5 Free Safari Colouring Pages · Made Very Simple</title>
+  <meta name="description" content="Download 5 free African safari colouring pages for kids aged 3–6: lion, elephant, giraffe, zebra and meerkat. Print at home or in the classroom.">
+  <meta property="og:title" content="5 Free Safari Colouring Pages">
+  <meta property="og:description" content="Lion, elephant, giraffe, zebra and meerkat. Free printable colouring pages for kids aged 3–6.">
+  <meta property="og:image" content="https://madeverysimple.co.za/freebies/preview-lion.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23F2643A'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>m</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/">made very simple<span>.</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/ai.html">AI</a>
+        <a href="/free.html" aria-current="page">Free pages</a>
+        <a href="/links.html">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero freebie">
+      <div class="freebie-text">
+        <div class="eyebrow">Free download</div>
+        <h1>5 free safari <span class="underline">colouring pages.</span></h1>
+        <p class="lead">A lion, an elephant, a giraffe, a zebra and a meerkat, with big, bold lines that little hands can colour. Made for kids aged 3–6.</p>
+        <ul class="ticks">
+          <li>Printable A4 / Letter PDF</li>
+          <li>Print as many copies as you like at home or in the classroom</li>
+          <li>Taken from our upcoming <b>My African Safari Colouring Book</b></li>
+        </ul>
+
+        <form id="signup" class="signup" novalidate>
+          <label for="name">First name <span class="opt">(optional)</span></label>
+          <input id="name" name="fields[name]" type="text" autocomplete="given-name">
+          <label for="email">Email address</label>
+          <input id="email" name="fields[email]" type="email" autocomplete="email" required>
+          <label class="consent"><input id="consent" type="checkbox" required> Send me the free pages and occasional emails from Made Very Simple (new freebies and book news). I can unsubscribe at any time.</label>
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+          <button class="btn" type="submit">Send me the free pages →</button>
+          <p id="msg" class="form-msg" role="status" aria-live="polite"></p>
+          <p class="disclosure-note">We'll email you the download link. Your details are kept private and never sold. <a href="/disclosure.html#privacy">Privacy</a>.</p>
+        </form>
+      </div>
+      <figure class="freebie-preview">
+        <img src="/freebies/preview-lion.jpg" alt="Preview of the lion colouring page" width="332" height="469">
+      </figure>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="y">2026</span> Made Very Simple · madeverysimple.co.za</div>
+      <div><a href="/disclosure.html">Affiliate disclosure &amp; privacy</a></div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // MailerLite form endpoint. Paste the "action" URL from your MailerLite embedded form here.
+    // Example: https://assets.mailerlite.com/jsonp/1234567/forms/987654321/subscribe
+    const FORM_ACTION = '';
+
+    const form = document.getElementById('signup');
+    const msg = document.getElementById('msg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email');
+      if (!email.value || !email.checkValidity()) { msg.textContent = 'Please enter a valid email address.'; email.focus(); return; }
+      if (!document.getElementById('consent').checked) { msg.textContent = 'Please tick the box so we can email you the pages.'; return; }
+      if (!FORM_ACTION) { msg.textContent = 'Sign-ups open very soon. Please check back shortly!'; return; }
+      const btn = form.querySelector('button');
+      btn.disabled = true; msg.textContent = 'Sending…';
+      try {
+        const res = await fetch(FORM_ACTION, { method: 'POST', body: new FormData(form) });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success !== false) { window.location.href = '/thanks.html'; return; }
+        msg.textContent = 'Something went wrong. Please check your email address and try again.';
+      } catch (err) {
+        msg.textContent = 'Something went wrong. Please try again in a moment.';
+      }
+      btn.disabled = false;
+    });
+  </script>
+</body>
+</html>
