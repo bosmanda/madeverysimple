@@ -4,7 +4,7 @@ Website for [madeverysimple.co.za](https://madeverysimple.co.za), hosted on GitH
 
 - `index.html` – home page with topics (AI live; Health, Love, Sport coming soon)
 - `ai.html` – AI made very simple
-- `links.html` – link-in-bio page for Instagram
+- `links.html` – link-in-bio page for Pinterest and other socials
 - `disclosure.html` – affiliate disclosure & privacy
 - `styles.css` – shared styles
 - `CNAME` – custom domain for GitHub Pages
