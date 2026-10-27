@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your cart · Made Very Simple</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23F2643A'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>m</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/">made very simple<span>.</span></a>
+      <nav class="nav">
+        <a href="/">Colouring books</a>
+        <a href="/free.html">Free pages</a>
+        <a href="/topics.html">Topics</a>
+        <a href="/cart.html" class="cart-link" aria-current="page">Cart <span class="count" data-cart-count hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap cart-page">
+    <h1>Your cart</h1>
+    <p class="notice" id="cancelled" hidden>Your payment wasn't completed and no money was taken. Your books are still here.</p>
+    <div id="empty" class="card empty" hidden>
+      <p>Your cart is empty.</p>
+      <a class="btn" href="/">Choose colouring books →</a>
+    </div>
+    <div class="cart-grid" id="full" hidden>
+      <div>
+        <ul class="cart-list" id="list"></ul>
+        <a class="see" href="/">← Add more books</a>
+      </div>
+      <form class="signup checkout" id="checkout" method="post" novalidate>
+        <h2>Checkout</h2>
+        <div class="total-row"><span>Total</span><b id="total">R0</b></div>
+        <label for="name">First name <span class="opt">(optional)</span></label>
+        <input id="name" name="name" type="text" autocomplete="given-name" maxlength="60">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="100">
+        <p class="hint">We send your download link to this address.</p>
+        <label class="consent"><input id="terms" name="terms" type="checkbox" value="1" required> <span>I agree to the <a href="/terms.html" target="_blank">terms of sale</a>. I understand these are digital downloads.</span></label>
+        <label class="consent"><input name="news" type="checkbox" value="1"> <span>Email me when new colouring books come out (optional).</span></label>
+        <div id="items"></div>
+        <button class="btn" type="submit">Pay securely with PayFast →</button>
+        <p id="msg" class="form-msg" role="status" aria-live="polite"></p>
+        <p class="disclosure-note">You'll pay on PayFast's secure page (card, EFT or SnapScan). We never see your card details.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="y">2026</span> Made Very Simple · madeverysimple.co.za</div>
+      <div><a href="/terms.html">Terms, refunds &amp; privacy</a></div>
+    </div>
+  </footer>
+  <script src="/js/shop.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    if (new URLSearchParams(location.search).get('cancelled')) document.getElementById('cancelled').hidden = false;
+    const form = document.getElementById('checkout');
+    form.action = PAY_URL;
+
+    function render() {
+      const cart = readCart();
+      document.getElementById('empty').hidden = cart.length > 0;
+      document.getElementById('full').hidden = cart.length === 0;
+      document.getElementById('list').innerHTML = cart.map(k => {
+        const b = byKey[k];
+        return `<li class="cart-item">
+          <img src="/books/${k}.jpg" alt="" width="72" height="93">
+          <div><b>${b.title}</b><small>Printable PDF · by ${b.brand}</small></div>
+          <span class="price">${rand(PRICE)}</span>
+          <button type="button" class="remove" data-remove="${k}" aria-label="Remove ${b.title}">✕</button>
+        </li>`;
+      }).join('');
+      document.getElementById('total').textContent = rand(PRICE * cart.length);
+      document.getElementById('items').innerHTML = cart.map(k => `<input type="hidden" name="items[]" value="${k}">`).join('');
+      document.querySelectorAll('[data-remove]').forEach(b => b.addEventListener('click', () => { removeFromCart(b.dataset.remove); render(); }));
+    }
+    render();
+
+    form.addEventListener('submit', e => {
+      const msg = document.getElementById('msg');
+      const email = document.getElementById('email');
+      if (!readCart().length) { e.preventDefault(); return; }
+      if (!email.value || !email.checkValidity()) { e.preventDefault(); msg.textContent = 'Please enter a valid email address – your download link goes there.'; email.focus(); return; }
+      if (!document.getElementById('terms').checked) { e.preventDefault(); msg.textContent = 'Please tick the box to agree to the terms of sale.'; return; }
+      msg.textContent = 'Taking you to PayFast…';
+      form.querySelector('button[type=submit]').disabled = true;
+    });
+    // Coming back with the browser's Back button: re-enable the button.
+    window.addEventListener('pageshow', () => { form.querySelector('button[type=submit]').disabled = false; });
+  </script>
+</body>
+</html>

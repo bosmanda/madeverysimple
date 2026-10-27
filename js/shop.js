@@ -1,0 +1,92 @@
+/* Made Very Simple – colouring book shop (catalogue + cart).
+   The real prices are checked again on the payment server, so this list is only for display. */
+const PAY_URL = 'https://pay.madeverysimple.co.za/checkout.php';
+const PRICE = 100;
+
+const BOOKS = [
+  { key: 'dinosaurs', title: 'My Dinosaur Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 friendly dinosaurs and prehistoric creatures, from the mighty T. rex to a baby dinosaur hatching from its egg.',
+    amazon: 'https://www.amazon.com/dp/B0HP7CRQTD' },
+  { key: 'african-safari', title: 'My African Safari Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 African animals – lion, elephant, giraffe, meerkat, dassie, secretary bird and many more.',
+    amazon: 'https://www.amazon.com/dp/B0HP7D78YM' },
+  { key: 'tractors', title: 'My Tractor Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 busy tractors and farm machines, from an old steam engine to a giant combine harvester.' },
+  { key: 'cars', title: 'My Car Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: 'From old to modern: 36 cars from the first horseless carriage to the flying car of the future.' },
+  { key: 'north-american-wildlife', title: 'My North American Wildlife Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 amazing animals – grizzly bear, moose, bald eagle, raccoon, polar bear and humpback whale.',
+    amazon: 'https://www.amazon.com/dp/B0HP7GBYSJ' },
+  { key: 'christmas-animals', title: 'My Christmas Animals Colouring Book', brand: 'Made Very Simple', line: 'boys', season: 'Christmas',
+    blurb: '36 festive animals – a reindeer with jingle bells, a penguin ice-skating and a puppy in a Santa hat.',
+    amazon: 'https://www.amazon.com/dp/B0HP828ZFB' },
+  { key: 'little-princess', title: 'My Little Princess Colouring Book', brand: 'Made Very Sweet', line: 'girls',
+    blurb: '36 sweet princess pictures – tea parties, ponies, unicorns, a baby dragon and happily ever after.' },
+  { key: 'unicorns', title: 'My Unicorn Colouring Book', brand: 'Made Very Sweet', line: 'girls',
+    blurb: '36 adorable unicorns having tea parties, flying over rainbows, dancing and making wishes.' },
+  { key: 'sweet-christmas', title: 'My Sweet Christmas Colouring Book', brand: 'Made Very Sweet', line: 'girls', season: 'Christmas',
+    blurb: '36 cosy Christmas pictures – baking gingerbread, ice skating, the Sugar Plum Fairy and waiting for Santa.' },
+];
+const byKey = Object.fromEntries(BOOKS.map(b => [b.key, b]));
+
+/* ---- cart (kept in this browser; falls back to memory if storage is blocked) ---- */
+let memCart = [];
+function readCart() {
+  try { const c = JSON.parse(localStorage.getItem('mvs_cart') || '[]'); return Array.isArray(c) ? c.filter(k => byKey[k]) : []; }
+  catch (e) { return memCart; }
+}
+function writeCart(c) {
+  memCart = c;
+  try { localStorage.setItem('mvs_cart', JSON.stringify(c)); } catch (e) {}
+  updateBadge();
+}
+function inCart(key) { return readCart().includes(key); }
+function addToCart(key) { const c = readCart(); if (!c.includes(key)) { c.push(key); writeCart(c); } }
+function removeFromCart(key) { writeCart(readCart().filter(k => k !== key)); }
+function rand(n) { return 'R' + n.toFixed(0); }
+
+function updateBadge() {
+  const n = readCart().length;
+  document.querySelectorAll('[data-cart-count]').forEach(el => { el.textContent = n; el.hidden = n === 0; });
+}
+
+/* ---- book cards ---- */
+function cardHTML(b) {
+  const added = inCart(b.key);
+  return `<article class="book" id="${b.key}">
+    <a class="book-cover" href="/book.html?b=${b.key}" aria-label="See inside ${b.title}">
+      <img src="/books/${b.key}.jpg" alt="${b.title} cover" width="600" height="776" loading="lazy">
+      ${b.season ? `<span class="ribbon">${b.season}</span>` : ''}
+    </a>
+    <div class="book-body">
+      <div class="book-brand">by ${b.brand}</div>
+      <h3><a href="/book.html?b=${b.key}">${b.title}</a></h3>
+      <p>${b.blurb}</p>
+      <div class="book-buy">
+        <span class="price">${rand(PRICE)}</span>
+        <button class="btn add ${added ? 'added' : ''}" data-add="${b.key}" type="button">${added ? 'In cart ✓' : 'Add to cart'}</button>
+      </div>
+      <a class="see" href="/book.html?b=${b.key}">See inside →</a>
+    </div>
+  </article>`;
+}
+
+function wireAddButtons(root = document) {
+  root.querySelectorAll('[data-add]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.add;
+      if (inCart(key)) { location.href = '/cart.html'; return; }
+      addToCart(key);
+      btn.textContent = 'In cart ✓'; btn.classList.add('added');
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.innerHTML = `Added to cart · <a href="/cart.html">View cart (${readCart().length})</a>`;
+        toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 3500);
+      }
+    });
+  });
+}
+
+// After a successful payment the thank-you page links back with ?paid=1 – empty the cart.
+if (new URLSearchParams(location.search).get('paid')) { writeCart([]); }
+document.addEventListener('DOMContentLoaded', updateBadge);

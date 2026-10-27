@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colouring Book · Made Very Simple</title>
+  <meta name="description" content="Printable colouring book for kids aged 3–6. 36 big, bold pictures. R100, instant PDF download.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23F2643A'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>m</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/">made very simple<span>.</span></a>
+      <nav class="nav">
+        <a href="/">Colouring books</a>
+        <a href="/free.html">Free pages</a>
+        <a href="/topics.html">Topics</a>
+        <a href="/cart.html" class="cart-link">Cart <span class="count" data-cart-count hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="main"></main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="y">2026</span> Made Very Simple · madeverysimple.co.za</div>
+      <div><a href="/terms.html">Terms, refunds &amp; privacy</a></div>
+    </div>
+  </footer>
+  <script src="/js/shop.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const key = new URLSearchParams(location.search).get('b');
+    const b = byKey[key];
+    const main = document.getElementById('main');
+    if (!b) {
+      main.innerHTML = '<section class="prose"><h1 style="font-size:2rem">Book not found</h1><p><a class="btn" href="/">See all colouring books →</a></p></section>';
+    } else {
+      document.title = b.title + ' · Printable PDF · Made Very Simple';
+      const added = inCart(b.key);
+      main.innerHTML = `
+        <section class="book-detail">
+          <div class="detail-cover"><img src="/books/${b.key}.jpg" alt="${b.title} cover" width="600" height="776"></div>
+          <div class="detail-text">
+            <a class="back" href="/#${b.key}">← All colouring books</a>
+            <div class="book-brand">by ${b.brand}${b.season ? ' · ' + b.season : ''}</div>
+            <h1>${b.title}</h1>
+            <p class="lead">${b.blurb}</p>
+            <ul class="ticks">
+              <li>36 big, bold pictures, each with its name at the top</li>
+              <li>Made for ages 3–6: thick lines and large areas to colour</li>
+              <li>Printable A4 PDF with front and back cover – about 10 MB</li>
+              <li>Print as many copies as you like for your family or one classroom</li>
+            </ul>
+            <div class="book-buy big">
+              <span class="price">${rand(PRICE)}</span>
+              <button class="btn add ${added ? 'added' : ''}" data-add="${b.key}" type="button">${added ? 'In cart ✓' : 'Add to cart'}</button>
+            </div>
+            <p class="small-note">Instant download after paying with PayFast. We email you the link too.</p>
+            ${b.amazon ? `<p class="small-note">Prefer a printed book? <a href="${b.amazon}" target="_blank" rel="noopener">Order the paperback on Amazon</a>.</p>` : ''}
+          </div>
+        </section>
+        <section>
+          <div class="section-head"><h2>A peek inside</h2><p>3 of the 36 pictures</p></div>
+          <div class="samples">
+            ${[1,2,3].map(n => `<img src="/books/${b.key}-sample${n}.jpg" alt="Sample page ${n} from ${b.title}" width="408" height="528" loading="lazy">`).join('')}
+          </div>
+        </section>
+        <section>
+          <div class="section-head"><h2>You might also like</h2></div>
+          <div class="books">${BOOKS.filter(x => x.line === b.line && x.key !== b.key).slice(0, 3).map(cardHTML).join('')}</div>
+        </section>`;
+      wireAddButtons(main);
+    }
+  </script>
+</body>
+</html>
