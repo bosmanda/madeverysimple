@@ -14,6 +14,8 @@ const BOOKS = [
     blurb: '36 busy tractors and farm machines, from an old steam engine to a giant combine harvester.' },
   { key: 'cars', title: 'My Car Colouring Book', brand: 'Made Very Simple', line: 'boys',
     blurb: 'From old to modern: 36 cars from the first horseless carriage to the flying car of the future.' },
+  { key: 'construction-vehicles', title: 'My Construction Vehicles Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 busy diggers, dump trucks, cranes and bulldozers – build a house, a bridge and a brand-new road.' },
   { key: 'north-american-wildlife', title: 'My North American Wildlife Colouring Book', brand: 'Made Very Simple', line: 'boys',
     blurb: '36 amazing animals – grizzly bear, moose, bald eagle, raccoon, polar bear and humpback whale.',
     amazon: 'https://www.amazon.com/dp/B0HP7GBYSJ' },
@@ -24,6 +26,8 @@ const BOOKS = [
     blurb: '36 sweet princess pictures – tea parties, ponies, unicorns, a baby dragon and happily ever after.' },
   { key: 'unicorns', title: 'My Unicorn Colouring Book', brand: 'Made Very Sweet', line: 'girls',
     blurb: '36 adorable unicorns having tea parties, flying over rainbows, dancing and making wishes.' },
+  { key: 'mermaids', title: 'My Mermaid Colouring Book', brand: 'Made Very Sweet', line: 'girls',
+    blurb: '36 little mermaids and their sea friends – dolphins, turtles, seahorses, treasure and tea parties under the sea.' },
   { key: 'sweet-christmas', title: 'My Sweet Christmas Colouring Book', brand: 'Made Very Sweet', line: 'girls', season: 'Christmas',
     blurb: '36 cosy Christmas pictures – baking gingerbread, ice skating, the Sugar Plum Fairy and waiting for Santa.' },
 ];
