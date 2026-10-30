@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+Disallow: /thanks.html
+
+Sitemap: https://madeverysimple.co.za/sitemap.xml
