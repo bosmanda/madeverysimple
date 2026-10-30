@@ -2,6 +2,12 @@
    The real prices are checked again on the payment server, so this list is only for display. */
 const PAY_URL = 'https://pay.madeverysimple.co.za/checkout.php';
 const PRICE = 100;
+const AMAZON_TAG = 'madeverysimpl-20';
+// Amazon series pages (paperbacks). Add the Made Very Sweet series link here once it is live on Amazon.
+const AMAZON_SERIES = {
+  boys: 'https://www.amazon.com/dp/B0HP7V2BKH?binding=paperback&tag=' + AMAZON_TAG,
+  girls: '',
+};
 
 const BOOKS = [
   { key: 'dinosaurs', title: 'My Dinosaur Colouring Book', brand: 'Made Very Simple', line: 'boys',

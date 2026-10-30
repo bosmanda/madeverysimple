@@ -320,3 +320,6 @@ a.card:hover { transform: translateY(-3px); }
   .cart-item .remove { grid-column: 3; grid-row: 1; align-self: start; }
   .cart-item .price { grid-column: 2; }
 }
+
+.book-buy.big { flex-wrap: wrap; }
+.btn.amazon { min-height: 44px; }

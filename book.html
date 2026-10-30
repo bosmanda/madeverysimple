@@ -62,9 +62,10 @@
             <div class="book-buy big">
               <span class="price">${rand(PRICE)}</span>
               <button class="btn add ${added ? 'added' : ''}" data-add="${b.key}" type="button">${added ? 'In cart ✓' : 'Add to cart'}</button>
+              ${AMAZON_SERIES[b.line] ? `<a class="btn ghost amazon" href="${AMAZON_SERIES[b.line]}" target="_blank" rel="sponsored noopener">Buy at Amazon</a>` : ''}
             </div>
             <p class="small-note">Instant download after paying with PayFast. We email you the link too.</p>
-            ${b.amazon ? `<p class="small-note">Prefer a printed book? <a href="${b.amazon}" target="_blank" rel="noopener">Order the paperback on Amazon</a>.</p>` : ''}
+            ${AMAZON_SERIES[b.line] ? `<p class="small-note">"Buy at Amazon" opens our printed paperback series on Amazon (affiliate link – we may earn a small commission).</p>` : ''}
           </div>
         </section>
         <section>
