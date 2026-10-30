@@ -22,6 +22,8 @@ const BOOKS = [
     blurb: 'From old to modern: 36 cars from the first horseless carriage to the flying car of the future.' },
   { key: 'construction-vehicles', title: 'My Construction Vehicles Colouring Book', brand: 'Made Very Simple', line: 'boys',
     blurb: '36 busy diggers, dump trucks, cranes and bulldozers – build a house, a bridge and a brand-new road.' },
+  { key: 'army-vehicles', title: 'My Army Vehicles Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 friendly army vehicles on land, in the air and at sea – tanks, trucks, helicopters, hovercraft and a giant aircraft carrier.' },
   { key: 'north-american-wildlife', title: 'My North American Wildlife Colouring Book', brand: 'Made Very Simple', line: 'boys',
     blurb: '36 amazing animals – grizzly bear, moose, bald eagle, raccoon, polar bear and humpback whale.',
     amazon: 'https://www.amazon.com/dp/B0HP7GBYSJ' },
@@ -34,10 +36,12 @@ const BOOKS = [
     blurb: '36 adorable unicorns having tea parties, flying over rainbows, dancing and making wishes.' },
   { key: 'mermaids', title: 'My Mermaid Colouring Book', brand: 'Made Very Sweet', line: 'girls',
     blurb: '36 little mermaids and their sea friends – dolphins, turtles, seahorses, treasure and tea parties under the sea.' },
+  { key: 'butterflies', title: 'My Butterfly Colouring Book', brand: 'Made Very Sweet', line: 'girls',
+    blurb: '36 beautiful butterflies, from the Monarch and Blue Morpho to the giant Birdwing, plus a caterpillar who grows wings.' },
   { key: 'sweet-christmas', title: 'My Sweet Christmas Colouring Book', brand: 'Made Very Sweet', line: 'girls', season: 'Christmas',
     blurb: '36 cosy Christmas pictures – baking gingerbread, ice skating, the Sugar Plum Fairy and waiting for Santa.' },
 ];
-const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book"};
+const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book", "army-vehicles": "army-vehicles-colouring-book", "butterflies": "butterfly-colouring-book"};
 BOOKS.forEach(b => { b.url = '/colouring-books/' + SLUGS[b.key] + '/'; });
 const byKey = Object.fromEntries(BOOKS.map(b => [b.key, b]));
 
