@@ -6,7 +6,7 @@ const AMAZON_TAG = 'madeverysimpl-20';
 // Amazon series pages (paperbacks). Add the Made Very Sweet series link here once it is live on Amazon.
 const AMAZON_SERIES = {
   boys: 'https://www.amazon.com/dp/B0HP7V2BKH?binding=paperback&tag=' + AMAZON_TAG,
-  girls: '',
+  girls: 'https://www.amazon.com/dp/B0HPP6FDPB?binding=paperback&tag=' + AMAZON_TAG,
 };
 
 const BOOKS = [
