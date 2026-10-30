@@ -43,18 +43,10 @@
 
     <section id="books">
       <div class="section-head">
-        <h2>Made Very Simple</h2>
-        <p>Dinosaurs, animals, tractors, cars and diggers.</p>
+        <h2>Our colouring books</h2>
+        <p>Dinosaurs, animals, vehicles, princesses, unicorns and more.</p>
       </div>
-      <div class="books" id="boys"></div>
-    </section>
-
-    <section id="girls">
-      <div class="section-head">
-        <h2>Made Very Sweet <span class="sweet">for girls</span></h2>
-        <p>Princesses, unicorns, mermaids and sparkle.</p>
-      </div>
-      <div class="books" id="girls-list"></div>
+      <div class="books" id="all-books"></div>
     </section>
 
     <section class="how">
@@ -87,8 +79,10 @@
   <script src="/js/shop.js"></script>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    document.getElementById('boys').innerHTML = BOOKS.filter(b => b.line === 'boys').map(cardHTML).join('');
-    document.getElementById('girls-list').innerHTML = BOOKS.filter(b => b.line === 'girls').map(cardHTML).join('');
+    // Mix the two lines together so every row has a variety of books.
+    const a = BOOKS.filter(b => b.line === 'boys'), g = BOOKS.filter(b => b.line === 'girls'), mixed = [];
+    while (a.length || g.length) { if (a.length) mixed.push(a.shift()); if (a.length) mixed.push(a.shift()); if (g.length) mixed.push(g.shift()); }
+    document.getElementById('all-books').innerHTML = mixed.map(cardHTML).join('');
     wireAddButtons();
   </script>
 </body>
