@@ -154,7 +154,17 @@ def book_page(b):
         "audience": {"@type": "PeopleAudience", "suggestedMinAge": 3, "suggestedMaxAge": 6},
         "offers": {"@type": "Offer", "url": url(b), "price": f"{PRICE}.00", "priceCurrency": "ZAR",
                    "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition",
-                   "seller": {"@type": "Organization", "name": "Made Very Simple"}}},
+                   "seller": {"@type": "Organization", "name": "Made Very Simple"},
+                   # Digital download: free, instant delivery by email; no returns (see /terms.html)
+                   "shippingDetails": {"@type": "OfferShippingDetails",
+                       "shippingRate": {"@type": "MonetaryAmount", "value": "0.00", "currency": "ZAR"},
+                       "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "ZA"},
+                       "deliveryTime": {"@type": "ShippingDeliveryTime",
+                           "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY"},
+                           "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY"}}},
+                   "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "ZA",
+                       "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                       "merchantReturnLink": SITE + "/terms.html"}}},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Colouring books", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": b['title'], "item": url(b)}]}]
