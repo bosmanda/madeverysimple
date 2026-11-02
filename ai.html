@@ -12,6 +12,36 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="canonical" href="https://madeverysimple.co.za/ai.html">
   <meta property="og:image" content="https://madeverysimple.co.za/books/dinosaurs.jpg">
+  <style>
+    .ai-shelf { display: grid; gap: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shelf-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+    .shelf-card:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(28,27,34,.08), 0 18px 40px rgba(28,27,34,.12); }
+    .shelf-art { position: relative; height: 300px; overflow: hidden; }
+    .art-free { background: linear-gradient(135deg, #FFE7D6 0%, #FDBA74 100%); }
+    .art-book { background: linear-gradient(135deg, #2B3A52 0%, #1E2A3A 100%); }
+    .shelf-art img { position: absolute; width: 170px; height: auto; border-radius: 6px; box-shadow: 0 14px 30px rgba(0,0,0,.28); transition: transform .3s ease; }
+    .shelf-art .back { left: 50%; top: 46px; transform: translateX(-8%) rotate(8deg); opacity: .95; }
+    .shelf-art .front { left: 50%; top: 30px; transform: translateX(-80%) rotate(-4deg); }
+    .shelf-card:hover .front { transform: translateX(-84%) rotate(-6deg) scale(1.03); }
+    .shelf-card:hover .back { transform: translateX(-2%) rotate(11deg); }
+    .badge { position: absolute; right: 18px; top: 18px; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 1.05rem; padding: 8px 14px; border-radius: 999px; color: #fff; box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+    .badge.free { background: #1F9D6B; }
+    .badge.price { background: #C2410C; }
+    .shelf-body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .shelf-body h3 { margin: 0; font-size: 1.35rem; }
+    .shelf-body p { margin: 0; color: var(--muted); }
+    .shelf-body .btn { align-self: flex-start; margin-top: auto; }
+    .tip-strip { display: grid; gap: 14px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .tip-strip a { display: block; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease; }
+    .tip-strip a:hover { transform: translateY(-3px) rotate(-0.5deg); }
+    .tip-strip img { display: block; width: 100%; height: auto; }
+    @media (max-width: 760px) {
+      .ai-shelf { grid-template-columns: 1fr; }
+      .shelf-art { height: 260px; }
+      .shelf-art img { width: 150px; }
+      .tip-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -34,20 +64,49 @@
       <p class="lead">You don't need to be technical. If you can send a WhatsApp, you can use AI to write, plan and learn faster.</p>
     </section>
 
-    <section>
-      <div class="grid">
-        <a class="card" href="/learn-claude.html" style="text-decoration: none">
+    <section class="ai-shelf" aria-label="AI guides">
+      <a class="shelf-card" href="/learn-claude.html">
+        <div class="shelf-art art-free">
+          <img class="back" src="/freebies/learn-claude-page2.jpg" alt="" width="600" height="849" loading="lazy">
+          <img class="front" src="/freebies/learn-claude-preview.jpg" alt="Learn Claude in 28 Days cheat sheet cover" width="600" height="849">
+          <span class="badge free">FREE</span>
+        </div>
+        <div class="shelf-body">
           <div class="eyebrow" style="color: var(--ai)">Free cheat sheet</div>
           <h3>Learn Claude in 28 Days</h3>
-          <p>One small AI task a day, 10 minutes each. Printable PDF with ready-to-copy prompts.</p>
-          <p style="margin-top: 10px; color: var(--ink); font-weight: 600">Get it free →</p>
-        </a>
-        <a class="card" href="/ai-prompts.html" style="text-decoration: none">
-          <div class="eyebrow" style="color: var(--ai)">Prompt book · R99</div>
+          <p>One small AI task a day, 10 minutes each. A printable 3-page PDF with ready-to-copy prompts.</p>
+          <span class="btn">Get it free →</span>
+        </div>
+      </a>
+      <a class="shelf-card" href="/ai-prompts.html">
+        <div class="shelf-art art-book">
+          <img class="back" src="/books/ai-prompts-sample2.jpg" alt="" width="600" height="849" loading="lazy">
+          <img class="front" src="/books/ai-prompts.jpg" alt="101 Copy-and-Paste AI Prompts book cover" width="600" height="849">
+          <span class="badge price">R99</span>
+        </div>
+        <div class="shelf-body">
+          <div class="eyebrow" style="color: var(--ai)">Prompt book · instant PDF</div>
           <h3>101 Copy-and-Paste AI Prompts</h3>
           <p>Home, money, work, kids, study and side hustles. Works with Claude, ChatGPT and Gemini.</p>
-          <p style="margin-top: 10px; color: var(--ink); font-weight: 600">See what's inside →</p>
-        </a>
+          <span class="btn">See what's inside →</span>
+        </div>
+      </a>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Latest AI tips</h2>
+        <p>Bite-sized tips you can save and try today. New ones on Pinterest every day.</p>
+      </div>
+      <div class="tip-strip">
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-05.jpg" alt="AI tip 5" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-03.jpg" alt="AI tip 3" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-08.jpg" alt="AI tip 8" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-13.jpg" alt="AI tip 13" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-15.jpg" alt="AI tip 15" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-17.jpg" alt="AI tip 17" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-11.jpg" alt="AI tip 11" width="432" height="540" loading="lazy"></a>
+        <a href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener"><img src="/social/ai-posts/thumb-20.jpg" alt="AI tip 20" width="432" height="540" loading="lazy"></a>
       </div>
     </section>
 
