@@ -50,7 +50,7 @@ const EXTRAS = [
   { key: 'ai-prompts', title: '101 Copy-and-Paste AI Prompts', brand: 'Made Very Simple', price: 99, url: '/ai-prompts.html' },
 ];
 // Switch to true once pay.madeverysimple.co.za sells 'ai-prompts' (price list + PDF on the server).
-const AI_PROMPTS_ON_SALE = false;
+const AI_PROMPTS_ON_SALE = true;
 const byKey = Object.fromEntries([...BOOKS, ...EXTRAS].map(b => [b.key, b]));
 function priceOf(key) { return (byKey[key] && byKey[key].price) || PRICE; }
 
