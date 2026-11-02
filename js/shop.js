@@ -45,7 +45,14 @@ const BOOKS = [
 ];
 const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book", "army-vehicles": "army-vehicles-colouring-book", "butterflies": "butterfly-colouring-book"};
 BOOKS.forEach(b => { b.url = '/colouring-books/' + SLUGS[b.key] + '/'; });
-const byKey = Object.fromEntries(BOOKS.map(b => [b.key, b]));
+// Other digital products (not colouring books). Each needs the same key and price on the payment server.
+const EXTRAS = [
+  { key: 'ai-prompts', title: '101 Copy-and-Paste AI Prompts', brand: 'Made Very Simple', price: 99, url: '/ai-prompts.html' },
+];
+// Switch to true once pay.madeverysimple.co.za sells 'ai-prompts' (price list + PDF on the server).
+const AI_PROMPTS_ON_SALE = false;
+const byKey = Object.fromEntries([...BOOKS, ...EXTRAS].map(b => [b.key, b]));
+function priceOf(key) { return (byKey[key] && byKey[key].price) || PRICE; }
 
 /* ---- cart (kept in this browser; falls back to memory if storage is blocked) ---- */
 let memCart = [];

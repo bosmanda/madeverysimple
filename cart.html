@@ -76,11 +76,11 @@
         return `<li class="cart-item">
           <img src="/books/${k}.jpg" alt="" width="72" height="93">
           <div><b>${b.title}</b><small>Printable PDF · by ${b.brand}</small></div>
-          <span class="price">${rand(PRICE)}</span>
+          <span class="price">${rand(priceOf(k))}</span>
           <button type="button" class="remove" data-remove="${k}" aria-label="Remove ${b.title}">✕</button>
         </li>`;
       }).join('');
-      document.getElementById('total').textContent = rand(PRICE * cart.length);
+      document.getElementById('total').textContent = rand(cart.reduce((t, k) => t + priceOf(k), 0));
       document.getElementById('items').innerHTML = cart.map(k => `<input type="hidden" name="items[]" value="${k}">`).join('');
       document.querySelectorAll('[data-remove]').forEach(b => b.addEventListener('click', () => { removeFromCart(b.dataset.remove); render(); }));
     }

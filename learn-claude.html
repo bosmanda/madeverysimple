@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Cheat Sheet: Learn Claude in 28 Days · Made Very Simple</title>
+  <meta name="description" content="A free printable 28-day cheat sheet to learn Claude AI, 10 minutes a day. Ready-to-copy prompts, no tech skills needed.">
+  <meta property="og:title" content="Free cheat sheet: Learn Claude in 28 Days">
+  <meta property="og:description" content="One small AI task a day for 28 days. Printable PDF with ready-to-copy prompts.">
+  <meta property="og:image" content="https://madeverysimple.co.za/pins/ai/cheat-sheet-pin.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23F2643A'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>m</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://madeverysimple.co.za/learn-claude.html">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/">made very simple<span>.</span></a>
+      <nav class="nav">
+        <a href="/">Colouring books</a>
+        <a href="/ai.html">AI</a>
+        <a href="/free.html">Free pages</a>
+        <a href="/cart.html" class="cart-link">Cart <span class="count" data-cart-count hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero freebie">
+      <div class="freebie-text">
+        <div class="eyebrow" style="color: var(--ai)">Free cheat sheet</div>
+        <h1>Learn Claude <span class="underline">in 28 days.</span></h1>
+        <p class="lead">One small AI task a day, about 10 minutes each. Copy the prompt, paste it into Claude and fill in the brackets. No tech skills needed.</p>
+        <ul class="ticks">
+          <li>3-page printable PDF (A4)</li>
+          <li>28 ready-to-copy prompts, from “say hello” to building a mini tool</li>
+          <li>The R‑T‑C‑F secret to better answers, plus safety tips</li>
+        </ul>
+        <form id="signup" class="signup" novalidate>
+          <label for="name">First name <span class="opt">(optional)</span></label>
+          <input id="name" name="fields[name]" type="text" autocomplete="given-name">
+          <label for="email">Email address</label>
+          <input id="email" name="fields[email]" type="email" autocomplete="email" required>
+          <label class="consent"><input id="consent" type="checkbox" required> Send me the cheat sheet and occasional emails from Made Very Simple (AI tips, freebies and new products). I can unsubscribe at any time.</label>
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+          <button class="btn" type="submit">Get the free cheat sheet →</button>
+          <p id="msg" class="form-msg" role="status" aria-live="polite"></p>
+          <p class="disclosure-note">Your details are kept private and never sold. <a href="/disclosure.html#privacy">Privacy</a>. Made Very Simple is not affiliated with Anthropic.</p>
+        </form>
+      </div>
+      <figure class="freebie-preview">
+        <img src="/freebies/learn-claude-preview.jpg" alt="Preview of the Learn Claude in 28 Days cheat sheet cover" width="332" height="470">
+      </figure>
+    </section>
+
+    <section class="band">
+      <h2>Want more? 101 copy-and-paste AI prompts.</h2>
+      <p>Home, money, work, kids and side hustles – one prompt for every everyday job. R99 instant PDF.</p>
+      <div class="btn-row">
+        <a class="btn" href="/ai-prompts.html">See the prompt book →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="y">2026</span> Made Very Simple · madeverysimple.co.za</div>
+      <div><a href="/disclosure.html">Affiliate disclosure &amp; privacy</a> · <a href="/contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // MailerLite form endpoint. For a separate AI list, create a new embedded form in MailerLite and paste its action URL here.
+    const FORM_ACTION = 'https://assets.mailerlite.com/jsonp/2734658/forms/202059724226561384/subscribe';
+    const form = document.getElementById('signup');
+    const msg = document.getElementById('msg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email');
+      if (!email.value || !email.checkValidity()) { msg.textContent = 'Please enter a valid email address.'; email.focus(); return; }
+      if (!document.getElementById('consent').checked) { msg.textContent = 'Please tick the box so we can send you the cheat sheet.'; return; }
+      const btn = form.querySelector('button');
+      btn.disabled = true; msg.textContent = 'Sending…';
+      try {
+        await fetch(FORM_ACTION, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+      } catch (err) { /* still give them the download */ }
+      window.location.href = '/learn-claude-thanks.html';
+    });
+  </script>
+  <script src="/js/shop.js"></script>
+</body>
+</html>
