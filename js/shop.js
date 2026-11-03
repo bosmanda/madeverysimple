@@ -40,10 +40,12 @@ const BOOKS = [
     blurb: '36 little mermaids and their sea friends – dolphins, turtles, seahorses, treasure and tea parties under the sea.' },
   { key: 'butterflies', title: 'My Butterfly Colouring Book', brand: 'Made Very Sweet', line: 'girls',
     blurb: '36 beautiful butterflies, from the Monarch and Blue Morpho to the giant Birdwing, plus a caterpillar who grows wings.' },
+  { key: 'kittens-puppies', title: 'My Kittens and Puppies Colouring Book', brand: 'Made Very Sweet', line: 'girls',
+    blurb: '36 adorable kittens and puppies – a puppy in a teacup, bubble baths, tea parties, a princess kitten and lots of cuddles.' },
   { key: 'sweet-christmas', title: 'My Sweet Christmas Colouring Book', brand: 'Made Very Sweet', line: 'girls', season: 'Christmas',
     blurb: '36 cosy Christmas pictures – baking gingerbread, ice skating, the Sugar Plum Fairy and waiting for Santa.' },
 ];
-const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book", "army-vehicles": "army-vehicles-colouring-book", "butterflies": "butterfly-colouring-book"};
+const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book", "army-vehicles": "army-vehicles-colouring-book", "butterflies": "butterfly-colouring-book", "kittens-puppies": "kittens-and-puppies-colouring-book"};
 BOOKS.forEach(b => { b.url = '/colouring-books/' + SLUGS[b.key] + '/'; });
 // Other digital products (not colouring books). Each needs the same key and price on the payment server.
 const EXTRAS = [
