@@ -237,7 +237,7 @@ def home():
 
 def extras():
     today = datetime.date.today().isoformat()
-    pages = ['/', '/free.html', '/topics.html', '/ai.html', '/terms.html', '/disclosure.html', '/links.html'] + [path(b) for b in BOOKS]
+    pages = ['/', '/free.html', '/pack.html', '/topics.html', '/ai.html', '/terms.html', '/disclosure.html', '/links.html'] + [path(b) for b in BOOKS]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in pages:
         pr = '1.0' if u == '/' else ('0.9' if u.startswith('/colouring-books/') else '0.5')

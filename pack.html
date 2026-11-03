@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Make a Free Personalised Colouring Pack · Made Very Simple</title>
+  <meta name="description" content="Choose 3 colouring pages – dinosaurs, tractors, unicorns, mermaids and more – add your child's name to the cover and download a free printable PDF pack.">
+  <link rel="canonical" href="https://madeverysimple.co.za/pack.html">
+  <meta property="og:title" content="Make a free personalised colouring pack">
+  <meta property="og:description" content="Pick 3 pages, add your child's name to the cover, print at home. Free.">
+  <meta property="og:image" content="https://madeverysimple.co.za/books/dinosaurs-sample1.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23F2643A'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>m</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/">made very simple<span>.</span></a>
+      <nav class="nav">
+        <a href="/">Colouring books</a>
+        <a href="/ai.html">AI</a>
+        <a href="/free.html">Free pages</a>
+        <a href="/pack.html" aria-current="page">Make a pack</a>
+        <a href="/topics.html">Topics</a>
+        <a href="/cart.html" class="cart-link">Cart <span class="count" data-cart-count hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap pack-page">
+    <section class="hero shop-hero">
+      <div class="eyebrow">Free · personalised</div>
+      <h1>Make your own <span class="underline">colouring pack.</span></h1>
+      <p class="lead">Pick any 3 pages from our books, put your child's name on the cover and print it at home. It's free.</p>
+      <ol class="pack-steps">
+        <li><b>1</b> Choose 3 pages</li>
+        <li><b>2</b> Add a name</li>
+        <li><b>3</b> Download &amp; print</li>
+      </ol>
+    </section>
+
+    <section id="choose" aria-labelledby="choose-h">
+      <div class="section-head">
+        <h2 id="choose-h">1. Choose 3 pages</h2>
+        <div class="chips" role="group" aria-label="Show pages">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-filter="boys" aria-pressed="false">Animals &amp; vehicles</button>
+          <button type="button" class="chip" data-filter="girls" aria-pressed="false">Princesses, unicorns &amp; more</button>
+        </div>
+      </div>
+      <div id="groups"></div>
+    </section>
+
+    <section id="make" aria-labelledby="make-h">
+      <h2 id="make-h">2. Add a name</h2>
+      <div class="pack-make">
+        <figure class="cover-preview">
+          <canvas id="cover" width="1240" height="1754" aria-label="Preview of your pack's cover"></canvas>
+          <figcaption>Cover preview – it's a colouring page too!</figcaption>
+        </figure>
+        <form id="pack-form" class="signup" novalidate>
+          <label for="kid">Child's first name</label>
+          <input id="kid" type="text" maxlength="16" autocomplete="off" placeholder="e.g. Liam">
+          <p class="hint">Up to 16 letters. Leave it empty for a cover that says "My Colouring Pack".</p>
+
+          <div id="gate">
+            <h3>3. Where should we send updates?</h3>
+            <label for="name">Your first name <span class="opt">(optional)</span></label>
+            <input id="name" name="fields[name]" type="text" autocomplete="given-name">
+            <label for="email">Your email address</label>
+            <input id="email" name="fields[email]" type="email" autocomplete="email" required>
+            <label class="consent"><input id="consent" type="checkbox" required> Send me occasional emails from Made Very Simple (new free pages and book news). I can unsubscribe at any time.</label>
+            <input type="hidden" name="ml-submit" value="1">
+            <input type="hidden" name="anticsrf" value="true">
+          </div>
+          <p id="welcome-back" class="hint" hidden>Welcome back! Your pack downloads straight away.</p>
+
+          <button class="btn" id="go" type="submit">Download my free pack →</button>
+          <p id="msg" class="form-msg" role="status" aria-live="polite"></p>
+          <p class="disclosure-note">Your PDF downloads right here in your browser. Your details are kept private and never sold. <a href="/disclosure.html#privacy">Privacy</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="done" class="card pack-done" hidden aria-live="polite">
+      <h2>Your pack is ready 🎉</h2>
+      <p>Check your downloads folder for <b id="fname">colouring-pack.pdf</b>. Print it on A4 and get colouring!</p>
+      <p>Loved these pages? Each one comes from a full book with <b>36 pictures</b>:</p>
+      <div class="books" id="upsell"></div>
+      <div class="btn-row" style="margin-top:20px">
+        <button class="btn ghost" type="button" id="again">Make another pack</button>
+        <a class="btn ghost" href="https://www.pinterest.com/madeverysimple/" target="_blank" rel="noopener">Follow us on Pinterest</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="pack-bar" id="bar" aria-hidden="true">
+    <span id="bar-text">Choose 3 pages</span>
+    <a class="btn" href="#make" id="bar-go">Next →</a>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="y">2026</span> Made Very Simple · madeverysimple.co.za</div>
+      <div><a href="/disclosure.html">Affiliate disclosure &amp; privacy</a> · <a href="/contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="/js/shop.js?v=20261103"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/js/pack.js?v=20261103"></script>
+</body>
+</html>
