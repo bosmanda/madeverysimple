@@ -118,7 +118,7 @@ FOOT = '''  <div class="toast" id="toast" role="status" aria-live="polite"></div
       <div><a href="/terms.html">Terms, refunds &amp; privacy</a></div>
     </div>
   </footer>
-  <script src="/js/shop.js"></script>
+  <script src="/js/shop.js?v=20261109"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear(); wireAddButtons();</script>
 </body>
 </html>
