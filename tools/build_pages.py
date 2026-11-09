@@ -129,7 +129,7 @@ def path(b): return f'/colouring-books/{b["slug"]}/'
 
 def card(b):
     rib = f'<span class="ribbon">{b["season"]}</span>' if b.get('season') else ''
-    return f'''<article class="book" id="{b["key"]}">
+    return f'''<article class="book" id="{b["key"]}" data-line="{b["line"]}">
     <a class="book-cover" href="{path(b)}" aria-label="See inside {e(b["title"])}">
       <img src="/books/{b["key"]}.jpg" alt="{e(b["title"])} cover – printable colouring book for kids" width="600" height="776" loading="lazy">{rib}
     </a>
@@ -228,10 +228,19 @@ def book_page(b):
     d = os.path.join(ROOT, 'colouring-books', b['slug']); os.makedirs(d, exist_ok=True)
     open(os.path.join(d, 'index.html'), 'w').write(head + '\n' + NAV + body + FOOT)
 
+FILTER_HTML = """<div class="filter" role="group" aria-label="Show colouring books for">
+        <button type="button" data-filter="all" aria-pressed="true">All books</button>
+        <button type="button" data-filter="boys" aria-pressed="false">For boys</button>
+        <button type="button" data-filter="girls" aria-pressed="false">For girls</button>
+        <span class="filter-count" aria-live="polite"></span>
+      </div>"""
+
 def home():
     p = os.path.join(ROOT, 'index.html'); s = open(p).read()
     cards = '\n'.join(card(b) for b in mixed())
     s = re.sub(r'<div class="books" id="all-books">.*?</div>\s*</section>', '<div class="books" id="all-books">\n' + cards + '\n      </div>\n    </section>', s, count=1, flags=re.S)
+    if 'class="filter"' not in s:
+        s = s.replace('<div class="books" id="all-books">', FILTER_HTML + '\n      <div class="books" id="all-books">', 1)
     s = re.sub(r"\n    // Mix the two lines together.*?document.getElementById\('all-books'\).innerHTML = mixed.map\(cardHTML\).join\(''\);", '', s, flags=re.S)
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": "Printable colouring books for kids",
           "itemListElement": [{"@type": "ListItem", "position": i+1, "url": url(b), "name": b['title']} for i, b in enumerate(mixed())]}

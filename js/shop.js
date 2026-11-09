@@ -122,3 +122,24 @@ function wireAddButtons(root = document) {
 // After a successful payment the thank-you page links back with ?paid=1 – empty the cart.
 if (new URLSearchParams(location.search).get('paid')) { writeCart([]); }
 document.addEventListener('DOMContentLoaded', updateBadge);
+
+/* ---- boys / girls filter on the home page (?for=boys or ?for=girls can be linked to) ---- */
+function wireFilter() {
+  const bar = document.querySelector('.filter'); if (!bar) return;
+  const cards = [...document.querySelectorAll('#all-books .book')];
+  const count = bar.querySelector('.filter-count');
+  function apply(which, push) {
+    if (!['all', 'boys', 'girls'].includes(which)) which = 'all';
+    let n = 0;
+    cards.forEach(c => { const show = which === 'all' || c.dataset.line === which; c.hidden = !show; if (show) n++; });
+    bar.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === which)));
+    if (count) count.textContent = n + (n === 1 ? ' book' : ' books');
+    if (push) {
+      const u = new URL(location.href);
+      if (which === 'all') u.searchParams.delete('for'); else u.searchParams.set('for', which);
+      history.replaceState(null, '', u);
+    }
+  }
+  bar.addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (b) apply(b.dataset.filter, true); });
+  apply(new URLSearchParams(location.search).get('for') || 'all', false);
+}

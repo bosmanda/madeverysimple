@@ -354,3 +354,16 @@ a.card:hover { transform: translateY(-3px); }
 .pack-bar .btn { padding: 8px 16px; min-height: 40px; }
 .pack-bar.away { transform: translate(-50%, 160%); opacity: 0; pointer-events: none; }
 .pack-page ~ .toast { bottom: 84px; width: max-content; border-radius: 16px; line-height: 1.4; }
+
+/* boys / girls filter */
+.filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: -4px 0 20px; }
+.filter button {
+  font: inherit; font-weight: 600; font-size: .95rem; cursor: pointer;
+  padding: 8px 16px; border-radius: 999px; border: 2px solid var(--line, #e5ded6);
+  background: var(--card, #fff); color: var(--ink, #222);
+}
+.filter button:hover { border-color: var(--accent); }
+.filter button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.filter button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.filter-count { color: var(--muted); font-size: .9rem; margin-left: 4px; }
+.book[hidden] { display: none; }

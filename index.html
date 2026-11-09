@@ -49,8 +49,14 @@
         <h2>Our colouring books</h2>
         <p>Dinosaurs, animals, vehicles, princesses, unicorns and more.</p>
       </div>
+      <div class="filter" role="group" aria-label="Show colouring books for">
+        <button type="button" data-filter="all" aria-pressed="true">All books</button>
+        <button type="button" data-filter="boys" aria-pressed="false">For boys</button>
+        <button type="button" data-filter="girls" aria-pressed="false">For girls</button>
+        <span class="filter-count" aria-live="polite"></span>
+      </div>
       <div class="books" id="all-books">
-<article class="book" id="dinosaurs">
+<article class="book" id="dinosaurs" data-line="boys">
     <a class="book-cover" href="/colouring-books/dinosaur-colouring-book/" aria-label="See inside My Dinosaur Colouring Book">
       <img src="/books/dinosaurs.jpg" alt="My Dinosaur Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -65,7 +71,7 @@
       <a class="see" href="/colouring-books/dinosaur-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="african-safari">
+<article class="book" id="african-safari" data-line="boys">
     <a class="book-cover" href="/colouring-books/african-safari-colouring-book/" aria-label="See inside My African Safari Colouring Book">
       <img src="/books/african-safari.jpg" alt="My African Safari Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -80,7 +86,7 @@
       <a class="see" href="/colouring-books/african-safari-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="little-princess">
+<article class="book" id="little-princess" data-line="girls">
     <a class="book-cover" href="/colouring-books/princess-colouring-book/" aria-label="See inside My Little Princess Colouring Book">
       <img src="/books/little-princess.jpg" alt="My Little Princess Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -95,7 +101,7 @@
       <a class="see" href="/colouring-books/princess-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="tractors">
+<article class="book" id="tractors" data-line="boys">
     <a class="book-cover" href="/colouring-books/tractor-colouring-book/" aria-label="See inside My Tractor Colouring Book">
       <img src="/books/tractors.jpg" alt="My Tractor Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -110,7 +116,7 @@
       <a class="see" href="/colouring-books/tractor-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="cars">
+<article class="book" id="cars" data-line="boys">
     <a class="book-cover" href="/colouring-books/car-colouring-book/" aria-label="See inside My Car Colouring Book">
       <img src="/books/cars.jpg" alt="My Car Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -125,7 +131,7 @@
       <a class="see" href="/colouring-books/car-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="unicorns">
+<article class="book" id="unicorns" data-line="girls">
     <a class="book-cover" href="/colouring-books/unicorn-colouring-book/" aria-label="See inside My Unicorn Colouring Book">
       <img src="/books/unicorns.jpg" alt="My Unicorn Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -140,7 +146,7 @@
       <a class="see" href="/colouring-books/unicorn-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="construction-vehicles">
+<article class="book" id="construction-vehicles" data-line="boys">
     <a class="book-cover" href="/colouring-books/construction-vehicles-colouring-book/" aria-label="See inside My Construction Vehicles Colouring Book">
       <img src="/books/construction-vehicles.jpg" alt="My Construction Vehicles Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -155,7 +161,7 @@
       <a class="see" href="/colouring-books/construction-vehicles-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="army-vehicles">
+<article class="book" id="army-vehicles" data-line="boys">
     <a class="book-cover" href="/colouring-books/army-vehicles-colouring-book/" aria-label="See inside My Army Vehicles Colouring Book">
       <img src="/books/army-vehicles.jpg" alt="My Army Vehicles Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -170,7 +176,7 @@
       <a class="see" href="/colouring-books/army-vehicles-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="mermaids">
+<article class="book" id="mermaids" data-line="girls">
     <a class="book-cover" href="/colouring-books/mermaid-colouring-book/" aria-label="See inside My Mermaid Colouring Book">
       <img src="/books/mermaids.jpg" alt="My Mermaid Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -185,7 +191,7 @@
       <a class="see" href="/colouring-books/mermaid-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="north-american-wildlife">
+<article class="book" id="north-american-wildlife" data-line="boys">
     <a class="book-cover" href="/colouring-books/north-american-wildlife-colouring-book/" aria-label="See inside My North American Wildlife Colouring Book">
       <img src="/books/north-american-wildlife.jpg" alt="My North American Wildlife Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -200,7 +206,7 @@
       <a class="see" href="/colouring-books/north-american-wildlife-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="christmas-animals">
+<article class="book" id="christmas-animals" data-line="boys">
     <a class="book-cover" href="/colouring-books/christmas-animals-colouring-book/" aria-label="See inside My Christmas Animals Colouring Book">
       <img src="/books/christmas-animals.jpg" alt="My Christmas Animals Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy"><span class="ribbon">Christmas</span>
     </a>
@@ -215,7 +221,7 @@
       <a class="see" href="/colouring-books/christmas-animals-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="butterflies">
+<article class="book" id="butterflies" data-line="girls">
     <a class="book-cover" href="/colouring-books/butterfly-colouring-book/" aria-label="See inside My Butterfly Colouring Book">
       <img src="/books/butterflies.jpg" alt="My Butterfly Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -230,7 +236,7 @@
       <a class="see" href="/colouring-books/butterfly-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="kittens-puppies">
+<article class="book" id="kittens-puppies" data-line="girls">
     <a class="book-cover" href="/colouring-books/kittens-and-puppies-colouring-book/" aria-label="See inside My Kittens and Puppies Colouring Book">
       <img src="/books/kittens-puppies.jpg" alt="My Kittens and Puppies Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -245,7 +251,7 @@
       <a class="see" href="/colouring-books/kittens-and-puppies-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="sweet-treats">
+<article class="book" id="sweet-treats" data-line="girls">
     <a class="book-cover" href="/colouring-books/sweet-treats-colouring-book/" aria-label="See inside My Sweet Treats Colouring Book">
       <img src="/books/sweet-treats.jpg" alt="My Sweet Treats Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -260,7 +266,7 @@
       <a class="see" href="/colouring-books/sweet-treats-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="horses-ponies">
+<article class="book" id="horses-ponies" data-line="girls">
     <a class="book-cover" href="/colouring-books/horses-and-ponies-colouring-book/" aria-label="See inside My Horses and Ponies Colouring Book">
       <img src="/books/horses-ponies.jpg" alt="My Horses and Ponies Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy">
     </a>
@@ -275,7 +281,7 @@
       <a class="see" href="/colouring-books/horses-and-ponies-colouring-book/">See inside →</a>
     </div>
   </article>
-<article class="book" id="sweet-christmas">
+<article class="book" id="sweet-christmas" data-line="girls">
     <a class="book-cover" href="/colouring-books/girls-christmas-colouring-book/" aria-label="See inside My Sweet Christmas Colouring Book">
       <img src="/books/sweet-christmas.jpg" alt="My Sweet Christmas Colouring Book cover – printable colouring book for kids" width="600" height="776" loading="lazy"><span class="ribbon">Christmas</span>
     </a>
@@ -325,6 +331,7 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
     wireAddButtons();
+    wireFilter();
   </script>
 </body>
 </html>
