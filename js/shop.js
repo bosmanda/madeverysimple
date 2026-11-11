@@ -26,6 +26,10 @@ const BOOKS = [
     amazon: 'https://www.amazon.com/dp/B0HQ2LYXQ1' },
   { key: 'army-vehicles', title: 'My Army Vehicles Colouring Book', brand: 'Made Very Simple', line: 'boys',
     blurb: '36 friendly army vehicles on land, in the air and at sea – tanks, trucks, helicopters, hovercraft and a giant aircraft carrier.' },
+  { key: 'rescue-vehicles', title: 'My Rescue Vehicles Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 brave rescue vehicles and friendly heroes – fire engines, police cars, ambulances, a lifeboat, helicopters and a kitten rescue.' },
+  { key: 'ocean-animals', title: 'My Ocean Animals Colouring Book', brand: 'Made Very Simple', line: 'boys',
+    blurb: '36 amazing ocean animals – friendly sharks, whales, dolphins, an octopus, sea turtles, African penguins and a sunken shipwreck.' },
   { key: 'north-american-wildlife', title: 'My North American Wildlife Colouring Book', brand: 'Made Very Simple', line: 'boys',
     blurb: '36 amazing animals – grizzly bear, moose, bald eagle, raccoon, polar bear and humpback whale.',
     amazon: 'https://www.amazon.com/dp/B0HP7GBYSJ' },
@@ -49,7 +53,7 @@ const BOOKS = [
   { key: 'sweet-christmas', title: 'My Sweet Christmas Colouring Book', brand: 'Made Very Sweet', line: 'girls', season: 'Christmas',
     blurb: '36 cosy Christmas pictures – baking gingerbread, ice skating, the Sugar Plum Fairy and waiting for Santa.' },
 ];
-const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book", "army-vehicles": "army-vehicles-colouring-book", "butterflies": "butterfly-colouring-book", "kittens-puppies": "kittens-and-puppies-colouring-book", "sweet-treats": "sweet-treats-colouring-book", "horses-ponies": "horses-and-ponies-colouring-book"};
+const SLUGS = {"dinosaurs": "dinosaur-colouring-book", "african-safari": "african-safari-colouring-book", "tractors": "tractor-colouring-book", "cars": "car-colouring-book", "construction-vehicles": "construction-vehicles-colouring-book", "north-american-wildlife": "north-american-wildlife-colouring-book", "christmas-animals": "christmas-animals-colouring-book", "little-princess": "princess-colouring-book", "unicorns": "unicorn-colouring-book", "mermaids": "mermaid-colouring-book", "sweet-christmas": "girls-christmas-colouring-book", "army-vehicles": "army-vehicles-colouring-book", "butterflies": "butterfly-colouring-book", "kittens-puppies": "kittens-and-puppies-colouring-book", "sweet-treats": "sweet-treats-colouring-book", "horses-ponies": "horses-and-ponies-colouring-book", "rescue-vehicles": "rescue-vehicles-colouring-book", "ocean-animals": "ocean-animals-colouring-book"};
 BOOKS.forEach(b => { b.url = '/colouring-books/' + SLUGS[b.key] + '/'; });
 // Other digital products (not colouring books). Each needs the same key and price on the payment server.
 const EXTRAS = [

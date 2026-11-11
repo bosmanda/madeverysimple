@@ -33,6 +33,14 @@ BOOKS = [
       seo='Army Vehicles Colouring Book for Kids 3–6', what='army vehicles',
       blurb='36 friendly army vehicles on land, in the air and at sea – tanks, trucks, helicopters, hovercraft and a giant aircraft carrier.',
       inside='a scout car, a tank with a flower, an army truck, a field kitchen, a bridge layer, a twin-rotor helicopter, a cargo plane, a submarine, a hovercraft and an aircraft carrier – all helping, building and rescuing, with no fighting'),
+ dict(key='rescue-vehicles', slug='rescue-vehicles-colouring-book', title='My Rescue Vehicles Colouring Book', brand='Made Very Simple', line='boys',
+      seo='Rescue Vehicles Colouring Book for Kids 3–6', what='rescue vehicles',
+      blurb='36 brave rescue vehicles and friendly heroes – fire engines, police cars, ambulances, a lifeboat, helicopters and a kitten rescue.',
+      inside='a fire engine, a ladder truck, a police car and police dog, an ambulance, a rescue helicopter, a lifeboat, a tow truck, a snow rescue truck, a water bomber plane and a thank-you parade for the heroes'),
+ dict(key='ocean-animals', slug='ocean-animals-colouring-book', title='My Ocean Animals Colouring Book', brand='Made Very Simple', line='boys',
+      seo='Ocean Animals Colouring Book for Kids 3–6', what='ocean animals',
+      blurb='36 amazing ocean animals – friendly sharks, whales, dolphins, an octopus, sea turtles, African penguins and a sunken shipwreck.',
+      inside='a great white shark, a hammerhead, a humpback whale, dolphins, an orca, an octopus, a sea turtle, a seahorse, African penguins, a Cape fur seal, a coral reef, a rock pool, a submarine and a treasure chest'),
  dict(key='north-american-wildlife', slug='north-american-wildlife-colouring-book', title='My North American Wildlife Colouring Book', brand='Made Very Simple', line='boys',
       seo='North American Animals Colouring Book for Kids 3–6', what='North American animals',
       blurb='36 amazing animals – grizzly bear, moose, bald eagle, raccoon, polar bear and humpback whale.',
@@ -118,7 +126,7 @@ FOOT = '''  <div class="toast" id="toast" role="status" aria-live="polite"></div
       <div><a href="/terms.html">Terms, refunds &amp; privacy</a></div>
     </div>
   </footer>
-  <script src="/js/shop.js?v=20261109"></script>
+  <script src="/js/shop.js?v=20261111"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear(); wireAddButtons();</script>
 </body>
 </html>
