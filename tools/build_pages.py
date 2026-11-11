@@ -155,8 +155,14 @@ def mixed():
 
 def book_page(b):
     who = 'girls' if b['line']=='girls' else 'kids'
-    title = f'{b["seo"]} – Printable PDF (R{PRICE}) · {b["brand"]}'
-    desc = f'{b["blurb"]} Printable A4 colouring book for {who} aged 3–6. R{PRICE}, instant PDF download – print at home as often as you like.'
+    title = f'{b["seo"]} | Printable PDF'
+    tail = f' Printable PDF for {who} aged 3–6 – R{PRICE}, instant download.'
+    short = b['blurb'].rstrip('.')
+    while len(short) + len(tail) + 1 > 172 and ', ' in short:   # keep Google's snippet short: drop list items from the end
+        short = short.rsplit(', ', 1)[0]
+    if short != b['blurb'].rstrip('.'):
+        short += ' and more'
+    desc = f'{short}.{tail}'
     img = f'{SITE}/books/{b["key"]}.jpg'
     ld = [{
         "@context": "https://schema.org", "@type": "Product",
