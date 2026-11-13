@@ -77,6 +77,14 @@ BOOKS = [
       seo='Horses and Ponies Colouring Book for Girls 3–6', what='horses and ponies',
       blurb='36 sweet horses and ponies – a mommy and foal, pony rides, bath time, a horse show, a carousel horse and a unicorn pony.',
       inside='a Shetland pony, a mommy horse and her foal, a pony ride, bath time, braiding a mane, a horse show rosette, a carousel horse, a flying horse and a unicorn pony'),
+ dict(key='fairies', slug='fairy-colouring-book', title='My Fairy Colouring Book', brand='Made Very Sweet', line='girls',
+      seo='Fairy Colouring Book for Girls 3–6', what='fairies',
+      blurb='36 sweet fairies and magical friends – flower fairies, a rainbow fairy, the tooth fairy, a fairy tea party and a baby dragon.',
+      inside='a flower fairy, a toadstool fairy house, a butterfly ride, rainbow, moon and snow fairies, the tooth fairy, a fairy tea party, fairy school, a unicorn ride, a baby dragon and a fairy castle'),
+ dict(key='easter-bunnies', slug='easter-colouring-book', title='My Easter Bunnies Colouring Book', brand='Made Very Sweet', line='girls', season='Easter',
+      seo='Easter Colouring Book for Kids 3–6', what='Easter pictures',
+      blurb='36 cute Easter pictures – bunnies, fluffy chicks, little lambs, pretty eggs, an egg hunt and a bunny bakery.',
+      inside='an Easter bunny, bunnies painting eggs, baby chicks, a lamb in daisies, ducklings, an egg hunt, hot cross buns, an Easter bonnet, a bunny bakery, an Easter parade and a South African spring garden'),
  dict(key='sweet-christmas', slug='girls-christmas-colouring-book', title='My Sweet Christmas Colouring Book', brand='Made Very Sweet', line='girls', season='Christmas',
       seo='Christmas Colouring Book for Girls 3–6', what='Christmas pictures',
       blurb='36 cosy Christmas pictures – baking gingerbread, ice skating, the Sugar Plum Fairy and waiting for Santa.',
@@ -126,7 +134,7 @@ FOOT = '''  <div class="toast" id="toast" role="status" aria-live="polite"></div
       <div><a href="/terms.html">Terms, refunds &amp; privacy</a></div>
     </div>
   </footer>
-  <script src="/js/shop.js?v=20261111"></script>
+  <script src="/js/shop.js?v=20261112"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear(); wireAddButtons();</script>
 </body>
 </html>
